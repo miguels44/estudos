@@ -1,27 +1,27 @@
-const express = require('express')
+//localhost: 4000/lembretes
+//endpoint: método do protocolo HTTP, padrão de acesso, funcionalidade
+const express = require("express")
 const app = express()
 app.use(express.json())
-
-app.get('/lembretes/:id/observacoes', (req, res) => {
-    res.json(baseDeObservacoes[req.params.id] || [])
+const baseDeLembretes = {}
+let id = 1
+//GET /lembretes (req, res) => {}
+app.get('/lembretes', (req, res) => {
+    res.json(baseDeLembretes)
 })
 
-app.post('/lembretes/:id/observacoes', (req,res)=>{
-    const lembretesId = req.params.lembretesId
-    const obsId = uuidv4()
-    const{texto} = req.body
-    const observacao = {
-        id: obsId,
-        lembretesId: lembretesId,
+app.post('/lembretes', (req, res) => {
+    const texto = req.body.texto
+    const lembretes = {
+        id: id,
         texto: texto
     }
-    const observacoes = baseDeObservacoes[lembretesId] || []
-    observacoes.push(observacao)
-    baseDeObservacoes[lembretesId] = observacoes
-    res.status(201).json(observacoes)
+    baseDeLembretes[id] = lembretes
+    id += 1
+    res.json(baseDeLembretes)
 })
 
-const port = 5000
-app.listen(port, ()=>{
-    console.log(`Observações. Porta ${port}`)
+const port = 4000
+app.listen(port, () => {
+    console.log(`Lembretes. Porta ${port}`)
 })
