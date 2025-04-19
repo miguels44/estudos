@@ -1,10 +1,9 @@
 {
-  "name": "lembretes",
+  "name": "observacoes",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "s.dev": "node --watch index.js",
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +11,7 @@
   "description": "",
   "dependencies": {
     "axios": "^1.8.4",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "uuid": "^11.1.0"
   }
 }
